@@ -2,7 +2,8 @@ Vagrant.configure(2) do |config|
 
     # main & default: normal OS series...
     config.vm.define "main", primary: true do |node|
-        node.vm.box = "ubuntu/trusty64"
+        node.vm.box = "ubuntu/xenial64"
+        #node.vm.box = "ubuntu/trusty64"
         #node.vm.box = "ubuntu/precise64"
         #node.vm.box = "debian/jessie64"
         #node.vm.box = "debian/wheezy64"
@@ -24,6 +25,7 @@ Vagrant.configure(2) do |config|
 
         node.vm.provision "shell", inline: <<-SHELL
             cd /vagrant
+            docker build  -f test/Dockerfile-ubuntu16.04  -t java_xenial   .
             docker build  -f test/Dockerfile-ubuntu14.04  -t java_trusty   .
             docker build  -f test/Dockerfile-ubuntu12.04  -t java_precise  .
             docker build  -f test/Dockerfile-debian8      -t java_jessie   .
