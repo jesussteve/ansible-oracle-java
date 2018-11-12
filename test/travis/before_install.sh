@@ -15,6 +15,7 @@ case "$TRAVIS_OS_NAME" in
     sed -i -e 's/^\(java_download_from_oracle:\).*$/\1 false/'  defaults/main.yml
 
     echo "==> Building test cases..."
+    docker build  -f test/Dockerfile-ubuntu16.04  -t java_trusty   .
     docker build  -f test/Dockerfile-ubuntu14.04  -t java_trusty   .
     docker build  -f test/Dockerfile-ubuntu12.04  -t java_precise  .
     docker build  -f test/Dockerfile-debian8      -t java_jessie   .

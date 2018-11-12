@@ -4,6 +4,7 @@ set -uo pipefail
 
 case "$TRAVIS_OS_NAME" in
   linux)
+    docker run -i java_xenial   2> result-ubuntu16.04
     docker run -i java_trusty   2> result-ubuntu14.04
     docker run -i java_precise  2> result-ubuntu12.04
     docker run -i java_jessie   2> result-debian8
@@ -12,6 +13,7 @@ case "$TRAVIS_OS_NAME" in
     docker run -i java_centos6  2> result-centos6
 
     echo "==> Validating the test results..."
+    sh -c "[ -s result-ubuntu16.04 ]"
     sh -c "[ -s result-ubuntu14.04 ]"
     sh -c "[ -s result-ubuntu12.04 ]"
     sh -c "[ -s result-debian8     ]"

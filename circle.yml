@@ -15,6 +15,7 @@ dependencies:
     - sed -i -e 's/^\(java_download_from_oracle:\).*$/\1 false/'  defaults/main.yml
 
     - echo "==> Building test cases..."
+    - docker build  -f test/Dockerfile-ubuntu16.04  -t java_xenial   .
     - docker build  -f test/Dockerfile-ubuntu14.04  -t java_trusty   .
     - docker build  -f test/Dockerfile-ubuntu12.04  -t java_precise  .
     - docker build  -f test/Dockerfile-debian8      -t java_jessie   .
@@ -24,6 +25,7 @@ dependencies:
 
 test:
   override:
+    - docker run -i java_xenial   2> result-ubuntu14.04
     - docker run -i java_trusty   2> result-ubuntu14.04
     - docker run -i java_precise  2> result-ubuntu12.04
     - docker run -i java_jessie   2> result-debian8
@@ -32,6 +34,7 @@ test:
     - docker run -i java_centos6  2> result-centos6
 
     - echo "==> Validating the test results..."
+    - sh -c "[ -s result-ubuntu16.04 ]"
     - sh -c "[ -s result-ubuntu14.04 ]"
     - sh -c "[ -s result-ubuntu12.04 ]"
     - sh -c "[ -s result-debian8     ]"

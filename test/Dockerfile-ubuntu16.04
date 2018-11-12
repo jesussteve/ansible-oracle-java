@@ -5,7 +5,7 @@
 
 
 # pull base image
-FROM jesussteve/ansible:debian8-onbuild
+FROM jesussteve/ansible:ubuntu16.04-onbuild
 
 MAINTAINER Steve Daniels <juststeve.d@gmail.com>
 

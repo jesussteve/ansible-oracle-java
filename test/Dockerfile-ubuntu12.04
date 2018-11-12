@@ -5,9 +5,9 @@
 
 
 # pull base image
-FROM williamyeh/ansible:ubuntu12.04-onbuild
+FROM jesussteve/ansible:ubuntu12.04-onbuild
 
-MAINTAINER William Yeh <william.pjyeh@gmail.com>
+MAINTAINER Steve Daniels <juststeve.d@gmail.com>
 
 
 #

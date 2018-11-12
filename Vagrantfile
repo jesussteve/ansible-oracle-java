@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
 
     # docker: for auto build & testing (e.g., Travis CI)
     config.vm.define "docker" do |node|
-        node.vm.box = "williamyeh/ubuntu-trusty64-docker"
+        node.vm.box = "jesussteve/ubuntu-trusty64-docker"
 
         node.vm.provision "shell", inline: <<-SHELL
             cd /vagrant

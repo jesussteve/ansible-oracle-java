@@ -5,9 +5,9 @@
 
 
 # pull base image
-FROM williamyeh/ansible:debian7-onbuild
+FROM jesussteve/ansible:debian7-onbuild
 
-MAINTAINER William Yeh <william.pjyeh@gmail.com>
+MAINTAINER Steve Daniels <juststeve.d@gmail.com>
 
 
 #
